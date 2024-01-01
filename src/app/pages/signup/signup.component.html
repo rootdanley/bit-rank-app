@@ -1,0 +1,37 @@
+
+<div class="central">
+  <div class="form-signin text-center">
+    <form (ngSubmit)="registerUserSubmit()" [formGroup]="registerUser">
+      <img class="mb-4" src="./assets/logo-bit.png" alt="" width="260" height="90">
+      <h1 class="h5 mb-3 fw-normal titulo-form">Crie sua conta</h1>
+
+      <div class="form-floating">
+        <input type="email" class="form-control"id="email" placeholder="name@example.com" formControlName="email">
+        <label>Email address</label>
+      </div>
+      <div *ngIf="registerUser.controls['email'].invalid && registerUser.controls['email'].touched">
+        Email is required.
+      </div>
+
+      <div class="form-floating">
+        <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+        <label>Password</label>
+      </div>
+      <div *ngIf="registerUser.controls['password'].invalid && registerUser.controls['password'].touched">
+        Password is required.
+      </div>
+      <div class="form-floating mt-1">
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" formControlName="confirmPassword">
+        <label>Confirm Password</label>
+      </div>
+      <div *ngIf="registerUser.controls['confirmPassword'].invalid && registerUser.controls['confirmPassword'].touched">
+        Confirm Password is required.
+      </div>
+      <div class="d-grid gap-2 mx-auto mt-1">
+        <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!registerUser.valid">Registrar</button>
+        <button class="w-100 btn-lg btn btn-light" type="button" (click)="backToLogin()">Voltar</button>
+      </div>
+      <p class="mt-5 mb-3 text-muted">&copy; rootdanley</p>
+    </form>
+  </div>
+</div>

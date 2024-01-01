@@ -1,0 +1,12 @@
+<div class="container">
+  <h5 class="mt-3">Prepare By Topics</h5>
+  <div class="row">
+    <div *ngFor="let category of categories$ | async" class="col-md-4 mt-3" (click)="viewCategory(category.id)">
+      <div class="card h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title mb-auto">{{category.name}}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container mt-3">
+  <div *ngIf="!quizStarted" class="card instruction-card">
+    <div class="card-header">
+      Como Jogar
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Pronto para testar seus conhecimentos?</h5>
+      <p class="card-text">
+        Responda às perguntas apresentadas e cada acerto valerá pontos para o ranking.
+        Leia cada questão com atenção e escolha a opção que acredita ser a correta.
+        Sua pontuação final e sua posição no ranking dependerão do número de respostas corretas.
+        Boa sorte e divirta-se!
+      </p>
+      <button class="btn btn-primary" (click)="startQuiz()">Iniciar Rank</button>
+      <button class="btn btn-light ms-1"  routerLink="/home">Voltar</button>
+    </div>
+  </div>
+</div>
+<div *ngIf="quizStarted && questions && questions.length > 0" class="mt-3 container">
+  <!-- Exibe apenas a questão atual baseada em currentQuestionIndex -->
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ questions[currentQuestionIndex].content }}</h5>
+      <form>
+        <div class="mb-3" *ngFor="let option of questions[currentQuestionIndex].options; let i = index">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" [name]="'question_' + currentQuestionIndex" [id]="'option_' + i" [value]="option">
+            <label class="form-check-label" id="'option_' + i">
+              {{ option }}
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="btn-group mt-3">
+    <button class="btn btn-secondary" (click)="previousQuestion()" [disabled]="currentQuestionIndex === 0">Anterior</button>
+    <button class="btn btn-secondary" (click)="nextQuestion()" [disabled]="currentQuestionIndex === questions.length - 1">Próximo</button>
+    <button class="btn btn-light ms-1" routerLink="/home">Voltar </button>
+  </div>
+</div>
+

@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <h2>Add New Question</h2>
+  <form [formGroup]="questionForm" (ngSubmit)="addQuestion()" class="row g-3">
+
+    <div class="col-md-6">
+      <label for="category" class="form-label">Category:</label>
+      <select id="category" class="form-select" formControlName="categoryId">
+        <option *ngFor="let category of categories" [value]="category.id">{{ category.name}}</option>
+      </select>
+    </div>
+
+    <div class="col-12">
+      <label for="content" class="form-label">Question:</label>
+      <textarea id="content" class="form-control" formControlName="content" rows="3"></textarea>
+    </div>
+
+    <div class="col-md-6">
+      <label for="correctAnswer" class="form-label">Correct Answer:</label>
+      <input type="text" class="form-control" id="correctAnswer" formControlName="correctAnswer">
+    </div>
+
+    <div class="col-12" formArrayName="options" *ngFor="let control of options.controls; let i = index; trackBy: trackByFn">
+      <label for="option{{i}}" class="form-label">Option {{i + 1}}:</label>
+      <input type="text" class="form-control" id="option{{i}}" [formControlName]="i">
+    </div>
+
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary">Add Question</button>
+    </div>
+
+  </form>
+</div>

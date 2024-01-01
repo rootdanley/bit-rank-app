@@ -1,0 +1,31 @@
+<div class="central">
+  <div class="form-signin text-center">
+    <form [formGroup]="loginUsuario">
+      <img class="mb-4" src="./assets/logo-bit.png" alt="" width="260" height="90">
+      <h1 class="h5 mb-3 fw-normal titulo-form">Conecte-se à sua Conta</h1>
+
+      <div class="form-floating">
+        <input type="email" class="form-control"id="email" placeholder="name@example.com" formControlName="email">
+        <label>Email address</label>
+      </div>
+      <div *ngIf="loginUsuario.controls['email'].invalid && loginUsuario.controls['email'].touched">
+        Email is required.
+      </div>
+
+      <div class="form-floating">
+        <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+        <label>Password</label>
+      </div>
+      <div *ngIf="loginUsuario.controls['password'].invalid && loginUsuario.controls['password'].touched">
+        Password is required.
+      </div>
+      <div class="d-grid gap-2 mx-auto mt-1">
+        <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="loginUser()" [disabled]="!loginUsuario.valid">Conectar</button>
+        <button type="button" class="btn btn btn-light" routerLink="/recovery">Esqueceu sua senha?</button>
+        <button class="w-100 btn btn-lg btn-outline-primary" type="button" (click)="registerUser()">Criar conta</button>
+      </div>
+      <p class="mt-5 mb-3 text-muted">&copy; rootdanley</p>
+    </form>
+  </div>
+</div>
+
